@@ -1,0 +1,20 @@
+1710075370103	Copy package
+1710075409903	Rename type 'DepInjectionLauncherApplication'
+1710076238524	Rename package 'com.selflearning.learnspringframework.examples.b1'
+1710321652400	Copy package
+1710321694879	Rename type 'LazyInitializationLauncherApplication'
+1710321967160	Rename package 'com.selflearning.learnspringframework.examples.b1'
+1710323675274	Copy package
+1710323719770	Rename type 'DepInjectionLauncherApplication'
+1710324396923	Rename package 'com.selflearning.learnspringframework.examples.lazy'
+1710324410669	Rename package 'com.selflearning.learnspringframework.examples.prototypevssingleton'
+1710324423202	Rename package 'com.selflearning.learnspringframework.examples.postconstructpredestroy'
+1710325633278	Copy package
+1710326211427	Rename type 'PrePostAnnotationsContextLauncherApplication'
+1710326265713	Encapsulate field 'dataService'
+1710326620757	Copy package
+1710326640457	Rename type 'CdiContextLauncherApplication'
+1710327719528	Delete element
+1710327775935	Delete element
+1710328016723	Delete element
+1710328095126	Delete element

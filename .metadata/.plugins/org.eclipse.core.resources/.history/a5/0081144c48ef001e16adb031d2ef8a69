@@ -1,0 +1,5 @@
+package com.selflearnining.springboot.myfirstwebapp.login;
+
+public class LoginController {
+
+}

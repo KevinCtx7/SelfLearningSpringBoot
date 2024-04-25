@@ -1,0 +1,11 @@
+1712559013535	Copy file
+1712559019385	Copy file
+1712559792534	Rename resource 'navigation.jsp'
+1712559798410	Rename resource 'header.jsp'
+1712559803052	Rename resource 'footer.jsp'
+1712563549222	Rename type 'LoginController'
+1712566098254	Extract local variable 'username'
+1712566110518	Extract local variable 'password'
+1712566137235	Extract method 'createNewUser'
+1712568154900	Copy compilation unit
+1712568170049	Rename type 'TodoControllerJPA'
