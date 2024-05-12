@@ -1,13 +1,19 @@
 package com.learnspringboot04.rest.webservices.restfulwebservices.user;
 
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
+
 import java.net.URI;
 import java.util.List;
 
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -39,14 +45,25 @@ public class UserResource {
 		
 	}
 	
+	
 	@GetMapping("/users/{id}")
-	public User retrieveUser(@PathVariable int id){
+	public EntityModel<User> retrieveUser(@PathVariable int id){
 		User user = service.findOne(id);
 		
 		if(user == null) {
 			throw new UserNotFoundException("id: "+id);
 		}
-		return user;
+		
+		//To Wrap link to the user obj
+		EntityModel<User> entityModel = EntityModel.of(user);
+		
+		
+		//To Retrieve url based on the method
+		WebMvcLinkBuilder link = linkTo(methodOn(this.getClass()).retrieveAllUsers());
+		
+		entityModel.add(link.withRel("all-users"));
+		
+		return entityModel;
 		
 	}
 	
@@ -63,10 +80,26 @@ public class UserResource {
 		return ResponseEntity.created(location).build();
 	}
 	
+	@PutMapping("/users/{id}")
+	public ResponseEntity<User> updateUser(@PathVariable int id, @Valid @RequestBody User user) {
+		user.setId(id);
+		service.update(user);
+		
+		URI location = ServletUriComponentsBuilder
+				.fromCurrentRequest()
+				.buildAndExpand(user.getId())
+				.toUri();
+		
+		return ResponseEntity.created(location).build();
+	
+	}
+	
 	@DeleteMapping("/users/{id}")
 	public void deleteUser(@PathVariable int id){
 		service.deleteById(id);
 		
 	}
+	
+	
 
 }

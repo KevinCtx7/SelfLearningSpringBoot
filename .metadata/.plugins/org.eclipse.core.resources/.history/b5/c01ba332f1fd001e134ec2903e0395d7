@@ -1,5 +1,0 @@
-package com.learnspringboot04.rest.webservices.restfulwebservices.user;
-
-public class UserNotFoundException extends RuntimeException {
-
-}
