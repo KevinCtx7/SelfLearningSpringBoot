@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 
+import com.learnspringboot04.rest.webservices.restfulwebservices.user.PostNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -27,7 +28,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 		return new ResponseEntity<ErrorDetails>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@ExceptionHandler(UserNotFoundException.class)
+	@ExceptionHandler({UserNotFoundException.class, PostNotFoundException.class})
 	public final ResponseEntity<ErrorDetails> handleUserNotFoundException(Exception ex, WebRequest request) throws Exception {
 		ErrorDetails errorDetails =  new ErrorDetails(LocalDateTime.now(), ex.getMessage(), request.getDescription(false));
 		
